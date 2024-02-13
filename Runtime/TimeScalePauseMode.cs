@@ -1,21 +1,25 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
 // © 2023-2024 Nikolay Melnikov <n.melnikov@depra.org>
 
+using UnityEngine;
+
 namespace Depra.Pause
 {
-	public sealed record TimeScalePauseMode : IPauseListener
+	public sealed class TimeScalePauseMode : IPauseListener
 	{
-		private readonly float _defaultTimeScale;
-		private readonly float _timeScaleDuringPause;
+		[SerializeField] private float _defaultTimeScale;
+		[SerializeField] private float _timeScaleDuringPause;
 
-		public TimeScalePauseMode(float defaultTimeScale = 1f, float timeScaleDuringPause = 0.001f)
+		public TimeScalePauseMode() : this(1, 0.001f) { }
+
+		public TimeScalePauseMode(float defaultTimeScale, float timeScaleDuringPause)
 		{
 			_defaultTimeScale = defaultTimeScale;
 			_timeScaleDuringPause = timeScaleDuringPause;
 		}
 
-		void IPauseListener.Pause() => UnityEngine.Time.timeScale = _timeScaleDuringPause;
+		void IPauseListener.Pause() => Time.timeScale = _timeScaleDuringPause;
 
-		void IPauseListener.Resume() => UnityEngine.Time.timeScale = _defaultTimeScale;
+		void IPauseListener.Resume() => Time.timeScale = _defaultTimeScale;
 	}
 }

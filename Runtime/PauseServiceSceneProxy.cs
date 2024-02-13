@@ -2,10 +2,12 @@
 // © 2023-2024 Nikolay Melnikov <n.melnikov@depra.org>
 
 using UnityEngine;
+using static Depra.Pause.Module;
 
 namespace Depra.Pause.Utils
 {
 	[DisallowMultipleComponent]
+	[AddComponentMenu(MENU_PATH + nameof(PauseServiceSceneProxy), DEFAULT_ORDER)]
 	internal sealed class PauseServiceSceneProxy : MonoBehaviour, IPauseService
 	{
 		private IPauseService _service;

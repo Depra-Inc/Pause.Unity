@@ -3,11 +3,13 @@
 
 using UnityEngine;
 using UnityEngine.Events;
+using static Depra.Pause.Module;
 
 namespace Depra.Pause
 {
 	[RequireComponent(typeof(IPauseService))]
-	internal sealed class PauseEventForwarder : MonoBehaviour, IPauseListener
+	[AddComponentMenu(MENU_PATH + nameof(PauseEventForwarding), DEFAULT_ORDER)]
+	internal sealed class PauseEventForwarding : MonoBehaviour, IPauseListener
 	{
 		[SerializeField] private UnityEvent _onPaused;
 		[SerializeField] private UnityEvent _onResumed;
