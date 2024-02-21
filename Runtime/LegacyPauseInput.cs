@@ -9,16 +9,18 @@ namespace Depra.Pause
 {
 	[DisallowMultipleComponent]
 	[AddComponentMenu(MENU_PATH + nameof(LegacyPauseInput), DEFAULT_ORDER)]
-	public sealed class LegacyPauseInput : MonoBehaviour, IPauseInput
+	public sealed class LegacyPauseInput : ScenePauseInput
 	{
+		[SerializeField] private string _buttonName = "Cancel";
+
 		private bool _paused;
 
-		public event Action Pause;
-		public event Action Resume;
+		public override event Action Pause;
+		public override event Action Resume;
 
 		private void Update()
 		{
-			if (Input.GetButtonDown("Cancel"))
+			if (Input.GetButtonDown(_buttonName))
 			{
 				Toggle();
 			}
