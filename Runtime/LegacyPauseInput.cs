@@ -14,6 +14,7 @@ namespace Depra.Pause
 		[SerializeField] private string _buttonName = "Cancel";
 
 		private bool _paused;
+		private IPauseService _service;
 
 		public override event Action Pause;
 		public override event Action Resume;
@@ -28,15 +29,16 @@ namespace Depra.Pause
 
 		private void Toggle()
 		{
-			_paused = !_paused;
-			if (_paused)
-			{
-				Pause?.Invoke();
-			}
-			else
+			if (_service.IsPaused)
 			{
 				Resume?.Invoke();
 			}
+			else
+			{
+				Pause?.Invoke();
+			}
 		}
+
+		internal override void Initialize(IPauseService service) => _service = service;
 	}
 }
