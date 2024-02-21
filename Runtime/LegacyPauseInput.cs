@@ -19,6 +19,8 @@ namespace Depra.Pause
 		public override event Action Pause;
 		public override event Action Resume;
 
+		public override void Initialize(IPauseService service) => _service = service;
+
 		private void Update()
 		{
 			if (Input.GetButtonDown(_buttonName))
@@ -38,7 +40,5 @@ namespace Depra.Pause
 				Pause?.Invoke();
 			}
 		}
-
-		internal override void Initialize(IPauseService service) => _service = service;
 	}
 }

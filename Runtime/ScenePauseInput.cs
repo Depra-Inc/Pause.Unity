@@ -11,6 +11,6 @@ namespace Depra.Pause
 		public abstract event Action Pause;
 		public abstract event Action Resume;
 
-		internal abstract void Initialize(IPauseService service);
+		public abstract void Initialize(IPauseService service);
 	}
 }
