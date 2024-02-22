@@ -1,6 +1,6 @@
 {
 	"name": "com.depra.pause.unity",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"displayName": "Depra.Pause",
 	"description": "",
 	"unity": "2022.3",
@@ -18,12 +18,5 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Depra-Inc/Pause.git"
-	},
-	"samples": [
-		{
-			"displayName": "InputSystem Sample",
-			"description": "",
-			"path": "Samples~/"
-		}
-	]
+	}
 }

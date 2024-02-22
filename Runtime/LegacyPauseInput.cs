@@ -31,7 +31,7 @@ namespace Depra.Pause
 
 		private void Toggle()
 		{
-			if (_service.IsPaused)
+			if (_service.Paused)
 			{
 				Resume?.Invoke();
 			}

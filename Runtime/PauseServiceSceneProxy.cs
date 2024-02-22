@@ -1,6 +1,7 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
 // © 2023-2024 Nikolay Melnikov <n.melnikov@depra.org>
 
+using System.Collections.Generic;
 using UnityEngine;
 using static Depra.Pause.Module;
 
@@ -13,12 +14,16 @@ namespace Depra.Pause.Utils
 		private IPauseService _service;
 
 		private void Awake() => _service = new PauseService(
-			GetComponent<IPauseInput>(),
-			GetComponentsInChildren<IPauseListener>());
+			new List<IPauseInput>(GetComponents<IPauseInput>()),
+			new List<IPauseListener>(GetComponentsInChildren<IPauseListener>()));
 
-		bool IPauseService.IsPaused => _service.IsPaused;
+		bool IPauseService.Paused => _service.Paused;
+
+		void IPauseService.Add(IPauseInput input) => _service.Add(input);
 
 		void IPauseService.Add(IPauseListener listener) => _service.Add(listener);
+
+		void IPauseService.Remove(IPauseInput input) => _service.Remove(input);
 
 		void IPauseService.Remove(IPauseListener listener) => _service.Remove(listener);
 	}
