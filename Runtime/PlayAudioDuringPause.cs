@@ -7,19 +7,19 @@ using static Depra.Pause.Module;
 namespace Depra.Pause
 {
 	[AddComponentMenu(MENU_PATH + nameof(PlayAudioDuringPause), DEFAULT_ORDER)]
-	public sealed class PlayAudioDuringPause : MonoBehaviour, IPauseListener
+	public sealed class PlayAudioDuringPause : ScenePauseListener
 	{
 		[SerializeField] private AudioSource _audioSource;
 
 		private void OnEnable() { }
 
-		void IPauseListener.Pause()
+		public override void Pause()
 		{
 			enabled = true;
 			_audioSource.Play();
 		}
 
-		void IPauseListener.Resume()
+		public override void Resume()
 		{
 			enabled = false;
 			_audioSource.Stop();

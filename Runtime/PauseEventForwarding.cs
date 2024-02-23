@@ -9,13 +9,13 @@ namespace Depra.Pause
 {
 	[RequireComponent(typeof(IPauseService))]
 	[AddComponentMenu(MENU_PATH + nameof(PauseEventForwarding), DEFAULT_ORDER)]
-	internal sealed class PauseEventForwarding : MonoBehaviour, IPauseListener
+	internal sealed class PauseEventForwarding : ScenePauseListener
 	{
 		[SerializeField] private UnityEvent _onPaused;
 		[SerializeField] private UnityEvent _onResumed;
 
-		void IPauseListener.Pause() => _onPaused.Invoke();
+		public override void Pause() => _onPaused.Invoke();
 
-		void IPauseListener.Resume() => _onResumed.Invoke();
+		public override void Resume() => _onResumed.Invoke();
 	}
 }
