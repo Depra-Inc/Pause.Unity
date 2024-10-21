@@ -6,8 +6,6 @@ namespace Depra.Pause
 	internal static class Module
 	{
 		public const int DEFAULT_ORDER = 52;
-		public const string MENU_PATH = nameof(Depra) + SLASH + nameof(Pause) + SLASH;
-
-		private const string SLASH = "/";
+		public const string MENU_PATH = nameof(Depra) + "/" + nameof(Pause) + "/";
 	}
 }

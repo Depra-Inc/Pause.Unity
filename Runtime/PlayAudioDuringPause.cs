@@ -13,13 +13,13 @@ namespace Depra.Pause
 
 		private void OnEnable() { }
 
-		public override void Pause()
+		public override void OnPause()
 		{
 			enabled = true;
 			_audioSource.Play();
 		}
 
-		public override void Resume()
+		public override void OnResume()
 		{
 			enabled = false;
 			_audioSource.Stop();

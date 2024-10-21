@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace Depra.Pause
 {
-	public abstract class ScenePauseInput : MonoBehaviour, IPauseInput
+	public abstract class ScenePauseInput : MonoBehaviour, IPauseInputSource
 	{
-		public abstract event Action Pause;
-		public abstract event Action Resume;
+		public abstract event Action PauseTriggered;
+		public abstract event Action ResumeTriggered;
 
-		public abstract void Initialize(IPauseService service);
+		public abstract void Initialize(IPauseState state);
 	}
 }

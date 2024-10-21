@@ -7,8 +7,8 @@ namespace Depra.Pause
 {
 	public abstract class ScenePauseListener : MonoBehaviour, IPauseListener
 	{
-		public abstract void Pause();
+		public abstract void OnPause();
 
-		public abstract void Resume();
+		public abstract void OnResume();
 	}
 }

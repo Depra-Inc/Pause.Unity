@@ -7,15 +7,14 @@ using static Depra.Pause.Module;
 
 namespace Depra.Pause
 {
-	[RequireComponent(typeof(IPauseService))]
 	[AddComponentMenu(MENU_PATH + nameof(PauseEventForwarding), DEFAULT_ORDER)]
 	internal sealed class PauseEventForwarding : ScenePauseListener
 	{
 		[SerializeField] private UnityEvent _onPaused;
 		[SerializeField] private UnityEvent _onResumed;
 
-		public override void Pause() => _onPaused.Invoke();
+		public override void OnPause() => _onPaused.Invoke();
 
-		public override void Resume() => _onResumed.Invoke();
+		public override void OnResume() => _onResumed.Invoke();
 	}
 }
